@@ -762,7 +762,11 @@ extern void *LJ_WIN_LOADLIBA(const char *path);
 
 #ifndef LUAJIT_SECURITY_MCODE
 /* Machine code page protection: 0 = insecure RWX, 1 = secure RW^X. */
+#if LJ_TARGET_LINUX
+#define LUAJIT_SECURITY_MCODE	0
+#else
 #define LUAJIT_SECURITY_MCODE	1
+#endif
 #endif
 
 #define LJ_SECURITY_MODE \
